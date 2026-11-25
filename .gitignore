@@ -1,0 +1,34 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Dataset images and downloaded archives
+dataset/UT_Zappos50K/
+*.zip
+
+# Temporary backups
+*_backup.*
+*_before_3d.*
+*_pre_reveal.*
+*_pre_text_reveal.*
+
+# Logs
+*.log

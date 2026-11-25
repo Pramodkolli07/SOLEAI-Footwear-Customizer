@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLEAI - 3D Customizer</title>
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+    }
+}
+</script>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #090909;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 24px 45px;
+    border-bottom: 1px solid #292929;
+    color: #e52b46;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+main {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+h1 { font-size: 36px; letter-spacing: 3px; }
+h1 span { color: #e52b46; }
+
+.workspace {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 25px;
+}
+
+#threePreview {
+    height: 560px;
+    background: radial-gradient(circle, #292929, #101010);
+    border: 1px solid #343434;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#threePreview canvas { display: block; }
+
+.controls {
+    padding: 25px;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+.control-group { margin-bottom: 25px; }
+
+.control-group h3 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 48px;
+    padding: 3px;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 14px;
+    background: #dc263e;
+    color: white;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+#modelStatus {
+    color: #42e88b;
+    margin-top: 18px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.instructions {
+    color: #999;
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+@media(max-width: 800px) {
+    .workspace { grid-template-columns: 1fr; }
+    #threePreview { height: 400px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>SOLEAI</header>
+
+<main>
+
+<h1>DESIGN YOUR <span>MASTERPIECE</span></h1>
+
+<div class="workspace">
+
+<section>
+    <div class="control-group">
+        <h3>SELECT YOUR FOOTWEAR</h3>
+        <select id="footwearSelector">
+            <option value="court-sneaker">Court Sneakers</option>
+            <option value="ballet-flat">Ballet Flats</option>
+            <option value="basketball-shoe">Basketball Shoes</option>
+            <option value="canvas-high-top">Canvas High Tops</option>
+            <option value="flip-flops">Flip-Flops</option>
+            <option value="leather-sandal">Leather Sandals</option>
+            <option value="monk-strap-shoe">Monk Strap Shoes</option>
+            <option value="oxford-shoe">Oxford Shoes</option>
+            <option value="penny-loafer">Penny Loafers</option>
+            <option value="running-shoe">Running Shoes</option>
+            <option value="slip-on-shoe">Slip-On Shoes</option>
+            <option value="trail-shoe">Trail Shoes</option>
+        </select>
+    </div>
+
+    <div id="threePreview"></div>
+
+    <div id="modelStatus">INITIALIZING 3D ENGINE...</div>
+
+    <p class="instructions">
+        Drag to rotate your sneaker. Scroll to zoom.
+        Choose any colour to customize your design.
+    </p>
+</section>
+
+<section class="controls">
+
+    <h2>YOUR COLOUR STUDIO</h2>
+
+    <div class="control-group">
+        <h3>UPPER COLOUR</h3>
+        <input type="color" value="#eeeeee"
+        oninput="changeShoeColor('upper',this.value)">
+    </div>
+
+    <div class="control-group">
+        <h3>SIDE PANEL COLOUR</h3>
+        <input type="color" value="#eeeeee"
+        oninput="changeShoeColor('side',this.value)">
+    </div>
+
+    <div class="control-group">
+        <h3>SOLE COLOUR</h3>
+        <input type="color" value="#eeeeee"
+        oninput="changeShoeColor('sole',this.value)">
+    </div>
+
+    <div class="control-group">
+        <h3>GRIP COLOUR</h3>
+        <input type="color" value="#222222"
+        oninput="changeShoeColor('grip',this.value)">
+    </div>
+
+    <div class="control-group">
+        <h3>LACE COLOUR</h3>
+        <input type="color" value="#eeeeee"
+        oninput="changeShoeColor('laces',this.value)">
+    </div>
+
+    <button class="reset-btn" onclick="resetShoeColors()">
+        RESET COLOURS
+    </button>
+
+</section>
+</div>
+</main>
+
+<script type="module" src="/static/js/three-test.js"></script>
+
+</body>
+</html>
+
+
+
+#footwearSelector {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: #202020;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+#footwearSelector:focus {
+    border-color: #dc143c;
+}
+
+#footwearSelector option {
+    background: #202020;
+    color: white;
+}

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneaker AI | Design Your Identity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo">SOLE<span>AI.</span></a>
+
+    <nav>
+        <a href="#building">The Process</a>
+        <a href="#built">The Result</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <a href="/customize" class="nav-button">CREATE YOURS ↗</a>
+</header>
+
+<main class="showcase">
+
+    <section class="panel building" id="building">
+        <div class="panel-content">
+            <p class="eyebrow">CHAPTER 01 / THE CREATION</p>
+
+            <h1>BUILD<br>YOUR <span>VISION.</span></h1>
+
+            <p class="description">
+                Every great sneaker begins with an idea.
+                Choose your style, experiment with colours,
+                and bring your imagination to life.
+            </p>
+
+            <div class="design-board">
+                <div class="board-top">
+                    <span>DESIGN STUDIO</span>
+                    <span>FIG. 001</span>
+                </div>
+
+                <svg class="blueprint-shoe" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M55 164 Q95 150 125 115 L178 72 Q195 60 212 80 L270 130 Q315 153 385 158 L430 175 Q455 186 440 202 L90 202 Q50 199 55 164Z"
+                          fill="none" stroke="#e8e8e8" stroke-width="3"/>
+                    <path d="M125 115 L155 155 L220 155 L270 130" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+                    <path d="M178 72 L195 135 L270 130" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+                    <path d="M55 177 Q180 194 440 180" fill="none" stroke="#dc263e" stroke-width="3"/>
+                    <path d="M90 202 L440 202" stroke="#dc263e" stroke-width="4"/>
+                    <path d="M190 112 L245 115 M180 125 L235 128 M170 138 L225 141"
+                          stroke="#dc263e" stroke-width="3"/>
+                    <circle cx="178" cy="72" r="5" fill="#dc263e"/>
+                    <circle cx="270" cy="130" r="5" fill="#dc263e"/>
+                    <path d="M178 72 L145 35 L100 35 M270 130 L315 85 L365 85"
+                          fill="none" stroke="#777" stroke-width="1" stroke-dasharray="4 5"/>
+                </svg>
+
+                <div class="board-bottom">
+                    <span>IDEA → DESIGN → CREATE</span>
+                    <span>SOLEAI STUDIO</span>
+                </div>
+            </div>
+
+            <div class="palette">
+                <span>YOUR COLOUR STORY</span>
+                <div class="colours">
+                    <i class="colour red"></i>
+                    <i class="colour white"></i>
+                    <i class="colour black"></i>
+                    <i class="colour silver"></i>
+                    <i class="colour gold"></i>
+                </div>
+            </div>
+
+            <a href="/customize" class="text-link">ENTER THE DESIGN STUDIO ↗</a>
+        </div>
+    </section>
+
+    <section class="panel built" id="built">
+        <div class="built-overlay"></div>
+
+        <div class="built-content">
+            <p class="eyebrow">FINAL CHAPTER / THE MASTERPIECE</p>
+
+            <div class="sneaker-art">
+                <div class="art-glow"></div>
+                <svg viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="shoeBody" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#f7f7f7"/>
+                            <stop offset="55%" stop-color="#bfc0c4"/>
+                            <stop offset="100%" stop-color="#777980"/>
+                        </linearGradient>
+                        <linearGradient id="sole" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#eeeeee"/>
+                            <stop offset="100%" stop-color="#777777"/>
+                        </linearGradient>
+                    </defs>
+
+                    <ellipse cx="300" cy="287" rx="235" ry="22" fill="#000" opacity=".5"/>
+
+                    <path d="M70 220 Q105 210 145 172 L225 90 Q250 70 274 98 L350 165 Q400 198 480 200 L525 220 Q555 240 520 257 L100 270 Q55 265 70 220Z"
+                          fill="url(#shoeBody)" stroke="#f5f5f5" stroke-width="3"/>
+
+                    <path d="M145 172 L180 215 L280 218 L350 165"
+                          fill="none" stroke="#777" stroke-width="5"/>
+
+                    <path d="M225 90 L245 178 L350 165"
+                          fill="none" stroke="#555" stroke-width="4"/>
+
+                    <path d="M240 115 L285 160 L325 165"
+                          fill="none" stroke="#dc263e" stroke-width="12" stroke-linecap="round"/>
+
+                    <path d="M70 220 Q200 250 525 220 L520 257 L100 270 Q55 265 70 220Z"
+                          fill="url(#sole)" stroke="#fff" stroke-width="2"/>
+
+                    <path d="M180 145 L245 180 M195 132 L260 168 M210 120 L275 155"
+                          stroke="#252525" stroke-width="5" stroke-linecap="round"/>
+
+                    <path d="M70 220 Q200 250 525 220"
+                          fill="none" stroke="#dc263e" stroke-width="5"/>
+
+                    <path d="M350 165 Q380 190 405 196"
+                          fill="none" stroke="#dc263e" stroke-width="4"/>
+
+                    <text x="390" y="238" fill="#222" font-size="13" font-weight="bold">SOLE AI</text>
+                </svg>
+            </div>
+
+            <div class="built-caption">
+                <span class="eyebrow">YOUR IDEA. YOUR IDENTITY.</span>
+                <h2>BUILT TO<br><span>STAND OUT.</span></h2>
+                <p>Not just another sneaker. A creation that tells your story.</p>
+            </div>
+
+            <div class="product-index">
+                <span>SOLEAI — ORIGINAL SERIES</span>
+                <span>001 / 001</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer id="about">
+    <span>SOLEAI © 2026</span>
+    <span>IMAGINE IT. DESIGN IT. OWN IT.</span>
+</footer>
+
+</body>
+</html>
+
+

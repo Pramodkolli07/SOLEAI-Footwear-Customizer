@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLEAI | Create Your Masterpiece</title>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customize.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+    <a href="/" class="logo">SOLE<span>AI</span></a>
+    <a href="/" class="back-home">← BACK TO HOME</a>
+</header>
+
+<main class="wizard">
+
+    <section class="wizard-heading">
+        <p class="eyebrow">YOUR DESIGN JOURNEY BEGINS HERE</p>
+        <h1>CREATE YOUR <span>IDENTITY.</span></h1>
+        <p>Seven chapters. One masterpiece. Designed entirely by you.</p>
+    </section>
+
+    <nav class="progress-nav" aria-label="Design chapters">
+        <div class="progress-track"><div id="progressFill"></div></div>
+        <div class="chapter-indicators">
+            <button class="chapter-dot active" data-go="0">01</button>
+            <button class="chapter-dot" data-go="1">02</button>
+            <button class="chapter-dot" data-go="2">03</button>
+            <button class="chapter-dot" data-go="3">04</button>
+            <button class="chapter-dot" data-go="4">05</button>
+            <button class="chapter-dot" data-go="5">06</button>
+            <button class="chapter-dot" data-go="6">07</button>
+        </div>
+    </nav>
+
+    <section class="workspace" id="workspace">
+
+        <div class="preview-panel" id="previewPanel">
+            <div class="preview-top">
+                <span>LIVE PREVIEW</span>
+                <span class="live-indicator">● LIVE</span>
+            </div>
+
+            <div class="shoe-stage">
+                <div id="soleaiPreview3D" class="soleai-preview-3d"></div>
+                <div id="soleaiModelStatus" class="soleai-model-status">
+                    INITIALIZING 3D ENGINE...
+                </div>
+            </div>
+
+            <div class="preview-bottom">
+                <span>YOUR CREATION</span>
+                <span id="previewLabel">CUSTOM DESIGN 001</span>
+            </div>
+        </div>
+
+        <div class="chapter-panel">
+
+            <!-- CHAPTER 01 -->
+            <section class="chapter active" data-chapter="0">
+                <p class="chapter-number">CHAPTER 01 / 07</p>
+                <h2>Choose your <span>footwear.</span></h2>
+                <p class="chapter-description">Every masterpiece begins with the right foundation.</p>
+
+                <div class="option-grid footwear-grid">
+                    <button class="option-card selected" data-footwear="Sneakers">Sneakers</button>
+                    <button class="option-card" data-footwear="Boots">Boots</button>
+                    <button class="option-card" data-footwear="Sandals">Sandals</button>
+                    <button class="option-card" data-footwear="Flip-flops">Flip-flops</button>
+                    <button class="option-card" data-footwear="Formal shoes">Formal shoes</button>
+                    <button class="option-card" data-footwear="Sports shoes">Sports shoes</button>
+                    <button class="option-card" data-footwear="Casual shoes">Casual shoes</button>
+                    <button class="option-card" data-footwear="Loafers">Loafers</button>
+                </div>
+            </section>
+
+            <!-- CHAPTER 02 -->
+            <section class="chapter" data-chapter="1">
+                <p class="chapter-number">CHAPTER 02 / 07</p>
+                <h2>Feel the <span>material.</span></h2>
+                <p class="chapter-description">Choose the texture that brings your vision to life.</p>
+
+                <div class="option-grid">
+                    <button class="option-card" data-material="Leather">Leather</button>
+                    <button class="option-card" data-material="Synthetic leather">Synthetic leather</button>
+                    <button class="option-card" data-material="Mesh">Mesh</button>
+                    <button class="option-card" data-material="Canvas">Canvas</button>
+                    <button class="option-card" data-material="Suede">Suede</button>
+                    <button class="option-card" data-material="Knit fabric">Knit fabric</button>
+                </div>
+                <button class="text-button" id="skipMaterial">Skip this chapter →</button>
+            </section>
+
+            <!-- CHAPTER 03 -->
+            <section class="chapter" data-chapter="2">
+                <p class="chapter-number">CHAPTER 03 / 07</p>
+                <h2>Paint your <span>personality.</span></h2>
+                <p class="chapter-description">Every colour tells a story. Make yours unforgettable.</p>
+
+                <div class="mode-switch">
+                    <button class="mode-button active" data-mode="individual">Individual colours</button>
+                    <button class="mode-button" data-mode="mono">Monochrome</button>
+                </div>
+
+                <div id="individualColors">
+                    <div class="part-selector">
+                        <button class="part active" data-part="upper">Upper</button>
+                        <button class="part" data-part="side">Side panel</button>
+                        <button class="part" data-part="toe">Toe</button>
+                        <button class="part" data-part="heel">Heel</button>
+                    </div>
+                    <p class="control-label">SELECT COLOUR</p>
+                    <div class="color-grid">
+                        <button class="color" data-color="#eeeeee" style="--swatch:#eeeeee" aria-label="White"></button>
+                        <button class="color" data-color="#171717" style="--swatch:#171717" aria-label="Black"></button>
+                        <button class="color" data-color="#dc263e" style="--swatch:#dc263e" aria-label="Crimson"></button>
+                        <button class="color" data-color="#1e4d8c" style="--swatch:#1e4d8c" aria-label="Blue"></button>
+                        <button class="color" data-color="#e6b84a" style="--swatch:#e6b84a" aria-label="Gold"></button>
+                        <button class="color" data-color="#47765a" style="--swatch:#47765a" aria-label="Green"></button>
+                        <button class="color" data-color="#a77b59" style="--swatch:#a77b59" aria-label="Tan"></button>
+                        <button class="color" data-color="#888888" style="--swatch:#888888" aria-label="Grey"></button>
+                    </div>
+                </div>
+
+                <div id="monochromeColors" hidden>
+                    <p class="control-label">ONE COLOUR. ONE IDENTITY.</p>
+                    <div class="color-grid">
+                        <button class="color mono-color" data-color="#eeeeee" style="--swatch:#eeeeee" aria-label="White"></button>
+                        <button class="color mono-color" data-color="#171717" style="--swatch:#171717" aria-label="Black"></button>
+                        <button class="color mono-color" data-color="#dc263e" style="--swatch:#dc263e" aria-label="Crimson"></button>
+                        <button class="color mono-color" data-color="#1e4d8c" style="--swatch:#1e4d8c" aria-label="Blue"></button>
+                        <button class="color mono-color" data-color="#e6b84a" style="--swatch:#e6b84a" aria-label="Gold"></button>
+                        <button class="color mono-color" data-color="#47765a" style="--swatch:#47765a" aria-label="Green"></button>
+                        <button class="color mono-color" data-color="#a77b59" style="--swatch:#a77b59" aria-label="Tan"></button>
+                        <button class="color mono-color" data-color="#888888" style="--swatch:#888888" aria-label="Grey"></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CHAPTER 04 -->
+            <section class="chapter" data-chapter="3">
+                <p class="chapter-number">CHAPTER 04 / 07</p>
+                <h2>Master the <span>grip.</span></h2>
+                <p class="chapter-description">Your sole shape matches your footwear. Choose its grip identity.</p>
+
+                <div class="sole-info">
+                    <span>SOLE PROFILE</span>
+                    <strong id="soleProfile">Sneaker profile</strong>
+                    <small>Automatically matched to your footwear type.</small>
+                </div>
+
+                <div class="option-grid">
+                    <button class="option-card selected" data-grip="Standard grip">Standard grip</button>
+                    <button class="option-card" data-grip="Zigzag grip">Zigzag grip</button>
+                    <button class="option-card" data-grip="Circular grip">Circular grip</button>
+                    <button class="option-card" data-grip="Wave grip">Wave grip</button>
+                    <button class="option-card" data-grip="Deep traction grip">Deep traction grip</button>
+                    <button class="option-card" data-grip="Hexagonal grip">Hexagonal grip</button>
+                </div>
+            </section>
+
+            <!-- CHAPTER 05 -->
+            <section class="chapter" data-chapter="4">
+                <p class="chapter-number">CHAPTER 05 / 07</p>
+                <h2>Choose your <span>laces.</span></h2>
+                <p class="chapter-description">The details make the difference.</p>
+
+                <div class="option-grid">
+                    <button class="option-card" data-laces="Flat laces">Flat laces</button>
+                    <button class="option-card" data-laces="Round laces">Round laces</button>
+                    <button class="option-card" data-laces="Rope laces">Rope laces</button>
+                    <button class="option-card" data-laces="No laces">No laces</button>
+                </div>
+
+                <p class="control-label">LACE COLOUR</p>
+                <div class="color-grid">
+                    <button class="color lace-color" data-color="#222222" style="--swatch:#222222" aria-label="Black"></button>
+                    <button class="color lace-color" data-color="#eeeeee" style="--swatch:#eeeeee" aria-label="White"></button>
+                    <button class="color lace-color" data-color="#dc263e" style="--swatch:#dc263e" aria-label="Crimson"></button>
+                    <button class="color lace-color" data-color="#e6b84a" style="--swatch:#e6b84a" aria-label="Gold"></button>
+                    <button class="color lace-color" data-color="#1e4d8c" style="--swatch:#1e4d8c" aria-label="Blue"></button>
+                </div>
+                <p id="laceNote" class="note"></p>
+            </section>
+
+            <!-- CHAPTER 06 -->
+            <section class="chapter" data-chapter="5">
+                <p class="chapter-number">CHAPTER 06 / 07</p>
+                <h2>Your design. <span>Your signature.</span></h2>
+                <p class="chapter-description">Review every detail before the grand reveal.</p>
+
+                <label class="control-label" for="designName">NAME YOUR MASTERPIECE</label>
+                <input id="designName" type="text" maxlength="35" placeholder="Enter your design name">
+
+                <div id="designSummary" class="summary-card"></div>
+            </section>
+
+            <!-- CHAPTER 07 -->
+            <section class="chapter reveal-chapter" data-chapter="6">
+                <p class="chapter-number">FINAL CHAPTER / 07</p>
+                <div class="reveal-content">
+                    <p class="eyebrow">PRESENTING YOUR CREATION</p>
+                    <h2>BEHOLD YOUR <span>MASTERPIECE.</span></h2>
+                    <div id="revealShoe" class="reveal-shoe"></div>
+                    <blockquote>
+                        "You didn't just design a shoe. You created something that reflects who you are."
+                    </blockquote>
+                    <h3>YOUR VISION. YOUR DESIGN. YOUR MASTERPIECE.</h3>
+                    <button class="order-button" id="placeOrder">PLACE YOUR ORDER</button>
+                </div>
+            </section>
+
+            <div class="wizard-actions" id="wizardActions">
+                <button class="back-button" id="backChapter" disabled>← BACK</button>
+                <button class="next-button" id="nextChapter">NEXT CHAPTER →</button>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<div class="chapter-transition" id="chapterTransition">
+    <div class="transition-flash"></div>
+    <div class="transition-lines"></div>
+    <div class="transition-number" id="transitionNumber">01</div>
+    <div class="transition-label" id="transitionLabel">SOLEAI PRESENTS</div>
+    <div class="transition-title" id="transitionTitle">THE CREATION</div>
+    <div class="transition-subtitle" id="transitionSubtitle">EVERY MASTERPIECE STARTS SOMEWHERE</div>
+</div>
+<script src="{{ url_for('static', filename='js/customize.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/soleai-customize.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/soleai-reveal.js') }}"></script>
+</body>
+</html>
+
+
